@@ -100,6 +100,12 @@ Class | Method | HTTP request | Description
 *InfoResourcesApi* | [**info_resources_partial_update**](docs/InfoResourcesApi.md#info_resources_partial_update) | **PATCH** /info-resources/{id}/ | 
 *InfoResourcesApi* | [**info_resources_read**](docs/InfoResourcesApi.md#info_resources_read) | **GET** /info-resources/{id}/ | 
 *InfoResourcesApi* | [**info_resources_update**](docs/InfoResourcesApi.md#info_resources_update) | **PUT** /info-resources/{id}/ | 
+*InterInfoinfosApi* | [**inter_infoinfos_create**](docs/InterInfoinfosApi.md#inter_infoinfos_create) | **POST** /inter-infoinfos/ | 
+*InterInfoinfosApi* | [**inter_infoinfos_delete**](docs/InterInfoinfosApi.md#inter_infoinfos_delete) | **DELETE** /inter-infoinfos/{id}/ | 
+*InterInfoinfosApi* | [**inter_infoinfos_list**](docs/InterInfoinfosApi.md#inter_infoinfos_list) | **GET** /inter-infoinfos/ | 
+*InterInfoinfosApi* | [**inter_infoinfos_partial_update**](docs/InterInfoinfosApi.md#inter_infoinfos_partial_update) | **PATCH** /inter-infoinfos/{id}/ | 
+*InterInfoinfosApi* | [**inter_infoinfos_read**](docs/InterInfoinfosApi.md#inter_infoinfos_read) | **GET** /inter-infoinfos/{id}/ | 
+*InterInfoinfosApi* | [**inter_infoinfos_update**](docs/InterInfoinfosApi.md#inter_infoinfos_update) | **PUT** /inter-infoinfos/{id}/ | 
 *InterProginfosApi* | [**inter_proginfos_create**](docs/InterProginfosApi.md#inter_proginfos_create) | **POST** /inter-proginfos/ | 
 *InterProginfosApi* | [**inter_proginfos_delete**](docs/InterProginfosApi.md#inter_proginfos_delete) | **DELETE** /inter-proginfos/{id}/ | 
 *InterProginfosApi* | [**inter_proginfos_list**](docs/InterProginfosApi.md#inter_proginfos_list) | **GET** /inter-proginfos/ | 
@@ -136,6 +142,7 @@ Class | Method | HTTP request | Description
 
  - [AuthToken](docs/AuthToken.md)
  - [InfoEdition](docs/InfoEdition.md)
+ - [InfoInfo](docs/InfoInfo.md)
  - [InfoResource](docs/InfoResource.md)
  - [Infsource](docs/Infsource.md)
  - [InfsourceTag](docs/InfsourceTag.md)

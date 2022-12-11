@@ -8,6 +8,7 @@ from interdbclient.api.info_editions_api import InfoEditionsApi
 from interdbclient.api.info_infsources_api import InfoInfsourcesApi
 from interdbclient.api.info_infsourcetags_api import InfoInfsourcetagsApi
 from interdbclient.api.info_resources_api import InfoResourcesApi
+from interdbclient.api.inter_infoinfos_api import InterInfoinfosApi
 from interdbclient.api.inter_proginfos_api import InterProginfosApi
 from interdbclient.api.prog_editions_api import ProgEditionsApi
 from interdbclient.api.prog_packages_api import ProgPackagesApi

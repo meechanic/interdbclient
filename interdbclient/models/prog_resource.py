@@ -118,8 +118,7 @@ class ProgResource(object):
             self.is_installation = is_installation
         if is_source is not None:
             self.is_source = is_source
-        if edition is not None:
-            self.edition = edition
+        self.edition = edition
 
     @property
     def id(self):
@@ -438,6 +437,8 @@ class ProgResource(object):
         :param edition: The edition of this ProgResource.  # noqa: E501
         :type: int
         """
+        if self._configuration.client_side_validation and edition is None:
+            raise ValueError("Invalid value for `edition`, must not be `None`")  # noqa: E501
 
         self._edition = edition
 

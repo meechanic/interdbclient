@@ -83,8 +83,7 @@ class InfoEdition(object):
             self.publisher = publisher
         if publishing_time is not None:
             self.publishing_time = publishing_time
-        if infsource is not None:
-            self.infsource = infsource
+        self.infsource = infsource
 
     @property
     def id(self):
@@ -256,6 +255,8 @@ class InfoEdition(object):
         :param infsource: The infsource of this InfoEdition.  # noqa: E501
         :type: int
         """
+        if self._configuration.client_side_validation and infsource is None:
+            raise ValueError("Invalid value for `infsource`, must not be `None`")  # noqa: E501
 
         self._infsource = infsource
 

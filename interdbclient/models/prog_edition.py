@@ -73,8 +73,7 @@ class ProgEdition(object):
             self.machine_description = machine_description
         if edition_number is not None:
             self.edition_number = edition_number
-        if package is not None:
-            self.package = package
+        self.package = package
 
     @property
     def id(self):
@@ -204,6 +203,8 @@ class ProgEdition(object):
         :param package: The package of this ProgEdition.  # noqa: E501
         :type: int
         """
+        if self._configuration.client_side_validation and package is None:
+            raise ValueError("Invalid value for `package`, must not be `None`")  # noqa: E501
 
         self._package = package
 

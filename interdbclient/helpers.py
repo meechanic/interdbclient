@@ -115,6 +115,13 @@ class IDBCHelper:
         configuration.api_key_prefix["Authorization"] = "Token"
         return interdbclient.InterProginfosApi(interdbclient.ApiClient(configuration))
 
+    def get_inter_infoinfos_api_instance(self):
+        configuration = interdbclient.Configuration()
+        configuration.host = self.get_current_conf_url()
+        configuration.api_key["Authorization"] = self.get_current_conf_value("token")
+        configuration.api_key_prefix["Authorization"] = "Token"
+        return interdbclient.InterInfoinfosApi(interdbclient.ApiClient(configuration))
+
 
 class InfoInfsourceClientBase:
 
@@ -234,12 +241,26 @@ class InterProgInfoClientBase:
         self.args = args
         self.helper = IDBCHelper(self.args)
         self.api_instance = self.helper.get_inter_proginfos_api_instance()
-        self.base_class = interdbclient.InfoResource
+        self.base_class = interdbclient.ProgInfo
         self.list_method = self.api_instance.inter_proginfos_list
         self.read_method = self.api_instance.inter_proginfos_read
         self.create_method = self.api_instance.inter_proginfos_create
         self.update_method = self.api_instance.inter_proginfos_update
         self.delete_method = self.api_instance.inter_proginfos_delete
+
+
+class InterInfoInfoClientBase:
+
+    def __init__(self, args):
+        self.args = args
+        self.helper = IDBCHelper(self.args)
+        self.api_instance = self.helper.get_inter_infoinfos_api_instance()
+        self.base_class = interdbclient.InfoInfo
+        self.list_method = self.api_instance.inter_infoinfos_list
+        self.read_method = self.api_instance.inter_infoinfos_read
+        self.create_method = self.api_instance.inter_infoinfos_create
+        self.update_method = self.api_instance.inter_infoinfos_update
+        self.delete_method = self.api_instance.inter_infoinfos_delete
 
 
 def typical_actions_process(CB):

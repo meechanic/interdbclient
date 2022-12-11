@@ -17,6 +17,7 @@ from __future__ import absolute_import
 # import models into model package
 from interdbclient.models.auth_token import AuthToken
 from interdbclient.models.info_edition import InfoEdition
+from interdbclient.models.info_info import InfoInfo
 from interdbclient.models.info_resource import InfoResource
 from interdbclient.models.infsource import Infsource
 from interdbclient.models.infsource_tag import InfsourceTag

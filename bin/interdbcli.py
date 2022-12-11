@@ -7,7 +7,7 @@ import yaml
 from interdbclient.helpers import (IDBCHelper, eprint_exception, eprint,
                                    InfoInfsourceClientBase, InfoInfsourceTagClientBase, InfoResourceClientBase, InfoEditionClientBase,
                                    ProgPackageClientBase, ProgPackageTagClientBase, ProgResourceClientBase, ProgEditionClientBase,
-                                   InterProgInfoClientBase,
+                                   InterProgInfoClientBase, InterInfoInfoClientBase,
                                    typical_actions_process)
 from interdbclient.rest import ApiException
 
@@ -86,6 +86,12 @@ available item-level cmds for bulk actions:
     subparser_inter_prog_infos.add_argument("--id", type=str, help="Entity ID")
     subparser_inter_prog_infos.add_argument("--input-file", type=str, help="Input file")
     subparser_inter_prog_infos.add_argument("--default-cmd", type=str, help="Default cmd for bulk actions")
+    subparser_inter_info_infos = subparsers.add_parser("inter-info-info", help="Utilities for work with Info-Info interconnections", formatter_class=argparse.RawDescriptionHelpFormatter, epilog=epilog)
+    subparser_inter_info_infos.add_argument("--action", type=str, help="Possible actions: list | create | get | update | delete | bulk-dump | bulk-upload")
+    subparser_inter_info_infos.add_argument("--profile", type=str, help="Config profile")
+    subparser_inter_info_infos.add_argument("--id", type=str, help="Entity ID")
+    subparser_inter_info_infos.add_argument("--input-file", type=str, help="Input file")
+    subparser_inter_info_infos.add_argument("--default-cmd", type=str, help="Default cmd for bulk actions")
     return parent_parser.parse_args(sys.argv[1:])
 
 
@@ -176,6 +182,16 @@ def main():
         action_process_result = False
         try:
             ICB = InterProgInfoClientBase(args)
+            action_process_result, obj = typical_actions_process(ICB)
+        except (ApiException, TypeError, OSError, yaml.YAMLError) as e:
+            eprint_exception(e, print_traceback=print_traceback)
+        if action_process_result == False:
+            eprint("Not implemented for action: {}".format(args.action))
+            exit(1)
+    elif args.group == "inter-info-info":
+        action_process_result = False
+        try:
+            ICB = InterInfoInfoClientBase(args)
             action_process_result, obj = typical_actions_process(ICB)
         except (ApiException, TypeError, OSError, yaml.YAMLError) as e:
             eprint_exception(e, print_traceback=print_traceback)

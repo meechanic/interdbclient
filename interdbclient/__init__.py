@@ -21,6 +21,7 @@ from interdbclient.api.info_editions_api import InfoEditionsApi
 from interdbclient.api.info_infsources_api import InfoInfsourcesApi
 from interdbclient.api.info_infsourcetags_api import InfoInfsourcetagsApi
 from interdbclient.api.info_resources_api import InfoResourcesApi
+from interdbclient.api.inter_infoinfos_api import InterInfoinfosApi
 from interdbclient.api.inter_proginfos_api import InterProginfosApi
 from interdbclient.api.prog_editions_api import ProgEditionsApi
 from interdbclient.api.prog_packages_api import ProgPackagesApi
@@ -33,6 +34,7 @@ from interdbclient.configuration import Configuration
 # import models into sdk package
 from interdbclient.models.auth_token import AuthToken
 from interdbclient.models.info_edition import InfoEdition
+from interdbclient.models.info_info import InfoInfo
 from interdbclient.models.info_resource import InfoResource
 from interdbclient.models.infsource import Infsource
 from interdbclient.models.infsource_tag import InfsourceTag
