@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 import yaml
 import traceback
-import infodbclient
+import interdbclient
 
 
 def eprint(*args, **kwargs):
@@ -21,7 +21,7 @@ class IDBCHelper:
 
     def __init__(self, args):
         self.args = args
-        conf_file = "{}/.config/infodbclient/config.yaml".format(str(Path.home()))
+        conf_file = "{}/.config/interdbclient/config.yaml".format(str(Path.home()))
         self.conf_file_object = {"profiles": {"main": {"print_traceback": True}}, "current": "main"}
         try:
             with open(conf_file, "r") as f:
@@ -52,89 +52,194 @@ class IDBCHelper:
                                      self.get_current_conf_value("port"),
                                      self.get_current_conf_value("path"))
 
-    def get_infsources_api_instance(self):
-        configuration = infodbclient.Configuration()
+    def get_info_infsources_api_instance(self):
+        configuration = interdbclient.Configuration()
         configuration.host = self.get_current_conf_url()
         configuration.api_key["Authorization"] = self.get_current_conf_value("token")
         configuration.api_key_prefix["Authorization"] = "Token"
-        return infodbclient.ApiinfsourcesApi(infodbclient.ApiClient(configuration))
+        return interdbclient.InfoInfsourcesApi(interdbclient.ApiClient(configuration))
 
-    def get_infsourcetags_api_instance(self):
-        configuration = infodbclient.Configuration()
+    def get_info_infsourcetags_api_instance(self):
+        configuration = interdbclient.Configuration()
         configuration.host = self.get_current_conf_url()
         configuration.api_key["Authorization"] = self.get_current_conf_value("token")
         configuration.api_key_prefix["Authorization"] = "Token"
-        return infodbclient.ApiinfsourcetagsApi(infodbclient.ApiClient(configuration))
+        return interdbclient.InfoInfsourcetagsApi(interdbclient.ApiClient(configuration))
 
-    def get_editions_api_instance(self):
-        configuration = infodbclient.Configuration()
+    def get_info_editions_api_instance(self):
+        configuration = interdbclient.Configuration()
         configuration.host = self.get_current_conf_url()
         configuration.api_key["Authorization"] = self.get_current_conf_value("token")
         configuration.api_key_prefix["Authorization"] = "Token"
-        return infodbclient.ApieditionsApi(infodbclient.ApiClient(configuration))
+        return interdbclient.InfoEditionsApi(interdbclient.ApiClient(configuration))
 
-    def get_resources_api_instance(self):
-        configuration = infodbclient.Configuration()
+    def get_info_resources_api_instance(self):
+        configuration = interdbclient.Configuration()
         configuration.host = self.get_current_conf_url()
         configuration.api_key["Authorization"] = self.get_current_conf_value("token")
         configuration.api_key_prefix["Authorization"] = "Token"
-        return infodbclient.ApiresourcesApi(infodbclient.ApiClient(configuration))
+        return interdbclient.InfoResourcesApi(interdbclient.ApiClient(configuration))
+
+    def get_prog_packages_api_instance(self):
+        configuration = interdbclient.Configuration()
+        configuration.host = self.get_current_conf_url()
+        configuration.api_key["Authorization"] = self.get_current_conf_value("token")
+        configuration.api_key_prefix["Authorization"] = "Token"
+        return interdbclient.ProgPackagesApi(interdbclient.ApiClient(configuration))
+
+    def get_prog_packagetags_api_instance(self):
+        configuration = interdbclient.Configuration()
+        configuration.host = self.get_current_conf_url()
+        configuration.api_key["Authorization"] = self.get_current_conf_value("token")
+        configuration.api_key_prefix["Authorization"] = "Token"
+        return interdbclient.ProgPackagetagsApi(interdbclient.ApiClient(configuration))
+
+    def get_prog_editions_api_instance(self):
+        configuration = interdbclient.Configuration()
+        configuration.host = self.get_current_conf_url()
+        configuration.api_key["Authorization"] = self.get_current_conf_value("token")
+        configuration.api_key_prefix["Authorization"] = "Token"
+        return interdbclient.ProgEditionsApi(interdbclient.ApiClient(configuration))
+
+    def get_prog_resources_api_instance(self):
+        configuration = interdbclient.Configuration()
+        configuration.host = self.get_current_conf_url()
+        configuration.api_key["Authorization"] = self.get_current_conf_value("token")
+        configuration.api_key_prefix["Authorization"] = "Token"
+        return interdbclient.ProgResourcesApi(interdbclient.ApiClient(configuration))
+
+    def get_inter_proginfos_api_instance(self):
+        configuration = interdbclient.Configuration()
+        configuration.host = self.get_current_conf_url()
+        configuration.api_key["Authorization"] = self.get_current_conf_value("token")
+        configuration.api_key_prefix["Authorization"] = "Token"
+        return interdbclient.InterProginfosApi(interdbclient.ApiClient(configuration))
 
 
-class InfsourceClientBase:
+class InfoInfsourceClientBase:
 
     def __init__(self, args):
         self.args = args
         self.helper = IDBCHelper(self.args)
-        self.api_instance = self.helper.get_infsources_api_instance()
-        self.base_class = infodbclient.Infsource
-        self.list_method = self.api_instance.apiinfsources_list
-        self.read_method = self.api_instance.apiinfsources_read
-        self.create_method = self.api_instance.apiinfsources_create
-        self.update_method = self.api_instance.apiinfsources_update
-        self.delete_method = self.api_instance.apiinfsources_delete
+        self.api_instance = self.helper.get_info_infsources_api_instance()
+        self.base_class = interdbclient.Infsource
+        self.list_method = self.api_instance.info_infsources_list
+        self.read_method = self.api_instance.info_infsources_read
+        self.create_method = self.api_instance.info_infsources_create
+        self.update_method = self.api_instance.info_infsources_update
+        self.delete_method = self.api_instance.info_infsources_delete
 
 
-class InfsourceTagClientBase:
-
-    def __init__(self, args):
-        self.args = args
-        self.helper = IDBCHelper(self.args)
-        self.api_instance = self.helper.get_infsourcetags_api_instance()
-        self.base_class = infodbclient.InfsourceTag
-        self.list_method = self.api_instance.apiinfsourcetags_list
-        self.read_method = self.api_instance.apiinfsourcetags_read
-        self.create_method = self.api_instance.apiinfsourcetags_create
-        self.update_method = self.api_instance.apiinfsourcetags_update
-        self.delete_method = self.api_instance.apiinfsourcetags_delete
-
-
-class EditionClientBase:
+class InfoInfsourceTagClientBase:
 
     def __init__(self, args):
         self.args = args
         self.helper = IDBCHelper(self.args)
-        self.api_instance = self.helper.get_editions_api_instance()
-        self.base_class = infodbclient.Edition
-        self.list_method = self.api_instance.apieditions_list
-        self.read_method = self.api_instance.apieditions_read
-        self.create_method = self.api_instance.apieditions_create
-        self.update_method = self.api_instance.apieditions_update
-        self.delete_method = self.api_instance.apieditions_delete
+        self.api_instance = self.helper.get_info_infsourcetags_api_instance()
+        self.base_class = interdbclient.InfsourceTag
+        self.list_method = self.api_instance.info_infsourcetags_list
+        self.read_method = self.api_instance.info_infsourcetags_read
+        self.create_method = self.api_instance.info_infsourcetags_create
+        self.update_method = self.api_instance.info_infsourcetags_update
+        self.delete_method = self.api_instance.info_infsourcetags_delete
 
 
-class ResourceClientBase:
+class InfoEditionClientBase:
 
     def __init__(self, args):
         self.args = args
         self.helper = IDBCHelper(self.args)
-        self.api_instance = self.helper.get_resources_api_instance()
-        self.base_class = infodbclient.Resource
-        self.list_method = self.api_instance.apiresources_list
-        self.read_method = self.api_instance.apiresources_read
-        self.create_method = self.api_instance.apiresources_create
-        self.update_method = self.api_instance.apiresources_update
-        self.delete_method = self.api_instance.apiresources_delete
+        self.api_instance = self.helper.get_info_editions_api_instance()
+        self.base_class = interdbclient.InfoEdition
+        self.list_method = self.api_instance.info_editions_list
+        self.read_method = self.api_instance.info_editions_read
+        self.create_method = self.api_instance.info_editions_create
+        self.update_method = self.api_instance.info_editions_update
+        self.delete_method = self.api_instance.info_editions_delete
+
+
+class InfoResourceClientBase:
+
+    def __init__(self, args):
+        self.args = args
+        self.helper = IDBCHelper(self.args)
+        self.api_instance = self.helper.get_info_resources_api_instance()
+        self.base_class = interdbclient.InfoResource
+        self.list_method = self.api_instance.info_resources_list
+        self.read_method = self.api_instance.info_resources_read
+        self.create_method = self.api_instance.info_resources_create
+        self.update_method = self.api_instance.info_resources_update
+        self.delete_method = self.api_instance.info_resources_delete
+
+
+class ProgPackageClientBase:
+
+    def __init__(self, args):
+        self.args = args
+        self.helper = IDBCHelper(self.args)
+        self.api_instance = self.helper.get_prog_packages_api_instance()
+        self.base_class = interdbclient.Infsource
+        self.list_method = self.api_instance.prog_packages_list
+        self.read_method = self.api_instance.prog_packages_read
+        self.create_method = self.api_instance.prog_packages_create
+        self.update_method = self.api_instance.prog_packages_update
+        self.delete_method = self.api_instance.prog_packages_delete
+
+
+class ProgPackageTagClientBase:
+
+    def __init__(self, args):
+        self.args = args
+        self.helper = IDBCHelper(self.args)
+        self.api_instance = self.helper.get_prog_packagetags_api_instance()
+        self.base_class = interdbclient.InfsourceTag
+        self.list_method = self.api_instance.prog_packagetags_list
+        self.read_method = self.api_instance.prog_packagetags_read
+        self.create_method = self.api_instance.prog_packagetags_create
+        self.update_method = self.api_instance.prog_packagetags_update
+        self.delete_method = self.api_instance.prog_packagetags_delete
+
+
+class ProgEditionClientBase:
+
+    def __init__(self, args):
+        self.args = args
+        self.helper = IDBCHelper(self.args)
+        self.api_instance = self.helper.get_prog_editions_api_instance()
+        self.base_class = interdbclient.InfoEdition
+        self.list_method = self.api_instance.prog_editions_list
+        self.read_method = self.api_instance.prog_editions_read
+        self.create_method = self.api_instance.prog_editions_create
+        self.update_method = self.api_instance.prog_editions_update
+        self.delete_method = self.api_instance.prog_editions_delete
+
+
+class ProgResourceClientBase:
+
+    def __init__(self, args):
+        self.args = args
+        self.helper = IDBCHelper(self.args)
+        self.api_instance = self.helper.get_prog_resources_api_instance()
+        self.base_class = interdbclient.InfoResource
+        self.list_method = self.api_instance.prog_resources_list
+        self.read_method = self.api_instance.prog_resources_read
+        self.create_method = self.api_instance.prog_resources_create
+        self.update_method = self.api_instance.prog_resources_update
+        self.delete_method = self.api_instance.prog_resources_delete
+
+
+class InterProgInfoClientBase:
+
+    def __init__(self, args):
+        self.args = args
+        self.helper = IDBCHelper(self.args)
+        self.api_instance = self.helper.get_inter_proginfos_api_instance()
+        self.base_class = interdbclient.InfoResource
+        self.list_method = self.api_instance.inter_proginfos_list
+        self.read_method = self.api_instance.inter_proginfos_read
+        self.create_method = self.api_instance.inter_proginfos_create
+        self.update_method = self.api_instance.inter_proginfos_update
+        self.delete_method = self.api_instance.inter_proginfos_delete
 
 
 def typical_actions_process(CB):
