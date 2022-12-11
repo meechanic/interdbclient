@@ -80,7 +80,7 @@ available item-level cmds for bulk actions:
     subparser_prog_resources.add_argument("--input-file", type=str, help="Input file")
     subparser_prog_resources.add_argument("--default-cmd", type=str, help="Default cmd for bulk actions")
     # inter
-    subparser_inter_prog_infos = subparsers.add_parser("inter-prog-info", help="Utilities for work with Prog Resources", formatter_class=argparse.RawDescriptionHelpFormatter, epilog=epilog)
+    subparser_inter_prog_infos = subparsers.add_parser("inter-prog-info", help="Utilities for work with Prog-Info interconnections", formatter_class=argparse.RawDescriptionHelpFormatter, epilog=epilog)
     subparser_inter_prog_infos.add_argument("--action", type=str, help="Possible actions: list | create | get | update | delete | bulk-dump | bulk-upload")
     subparser_inter_prog_infos.add_argument("--profile", type=str, help="Config profile")
     subparser_inter_prog_infos.add_argument("--id", type=str, help="Entity ID")
