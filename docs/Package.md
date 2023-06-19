@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **supercategory** | **str** |  | [optional] 
 **category** | **str** |  | [optional] 
 **subcategory** | **str** |  | [optional] 
+**license_type** | **str** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

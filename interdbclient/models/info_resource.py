@@ -46,6 +46,7 @@ class InfoResource(object):
         'collection': 'str',
         'subcollection': 'str',
         'is_source': 'bool',
+        'kind': 'str',
         'edition': 'int'
     }
 
@@ -63,10 +64,11 @@ class InfoResource(object):
         'collection': 'collection',
         'subcollection': 'subcollection',
         'is_source': 'is_source',
+        'kind': 'kind',
         'edition': 'edition'
     }
 
-    def __init__(self, id=None, text=None, human_description=None, machine_description=None, scheme=None, host=None, full_path=None, dirname=None, basename=None, supercollection=None, collection=None, subcollection=None, is_source=None, edition=None, _configuration=None):  # noqa: E501
+    def __init__(self, id=None, text=None, human_description=None, machine_description=None, scheme=None, host=None, full_path=None, dirname=None, basename=None, supercollection=None, collection=None, subcollection=None, is_source=None, kind=None, edition=None, _configuration=None):  # noqa: E501
         """InfoResource - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -85,6 +87,7 @@ class InfoResource(object):
         self._collection = None
         self._subcollection = None
         self._is_source = None
+        self._kind = None
         self._edition = None
         self.discriminator = None
 
@@ -113,6 +116,8 @@ class InfoResource(object):
             self.subcollection = subcollection
         if is_source is not None:
             self.is_source = is_source
+        if kind is not None:
+            self.kind = kind
         self.edition = edition
 
     @property
@@ -392,6 +397,27 @@ class InfoResource(object):
         """
 
         self._is_source = is_source
+
+    @property
+    def kind(self):
+        """Gets the kind of this InfoResource.  # noqa: E501
+
+
+        :return: The kind of this InfoResource.  # noqa: E501
+        :rtype: str
+        """
+        return self._kind
+
+    @kind.setter
+    def kind(self, kind):
+        """Sets the kind of this InfoResource.
+
+
+        :param kind: The kind of this InfoResource.  # noqa: E501
+        :type: str
+        """
+
+        self._kind = kind
 
     @property
     def edition(self):

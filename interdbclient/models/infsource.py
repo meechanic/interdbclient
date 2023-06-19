@@ -42,7 +42,8 @@ class Infsource(object):
         'author_list': 'str',
         'supercategory': 'str',
         'category': 'str',
-        'subcategory': 'str'
+        'subcategory': 'str',
+        'license_type': 'str'
     }
 
     attribute_map = {
@@ -55,10 +56,11 @@ class Infsource(object):
         'author_list': 'author_list',
         'supercategory': 'supercategory',
         'category': 'category',
-        'subcategory': 'subcategory'
+        'subcategory': 'subcategory',
+        'license_type': 'license_type'
     }
 
-    def __init__(self, id=None, name=None, formal_name=None, clear_name=None, human_description=None, machine_description=None, author_list=None, supercategory=None, category=None, subcategory=None, _configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, formal_name=None, clear_name=None, human_description=None, machine_description=None, author_list=None, supercategory=None, category=None, subcategory=None, license_type=None, _configuration=None):  # noqa: E501
         """Infsource - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -74,6 +76,7 @@ class Infsource(object):
         self._supercategory = None
         self._category = None
         self._subcategory = None
+        self._license_type = None
         self.discriminator = None
 
         if id is not None:
@@ -95,6 +98,8 @@ class Infsource(object):
             self.category = category
         if subcategory is not None:
             self.subcategory = subcategory
+        if license_type is not None:
+            self.license_type = license_type
 
     @property
     def id(self):
@@ -310,6 +315,27 @@ class Infsource(object):
         """
 
         self._subcategory = subcategory
+
+    @property
+    def license_type(self):
+        """Gets the license_type of this Infsource.  # noqa: E501
+
+
+        :return: The license_type of this Infsource.  # noqa: E501
+        :rtype: str
+        """
+        return self._license_type
+
+    @license_type.setter
+    def license_type(self, license_type):
+        """Sets the license_type of this Infsource.
+
+
+        :param license_type: The license_type of this Infsource.  # noqa: E501
+        :type: str
+        """
+
+        self._license_type = license_type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

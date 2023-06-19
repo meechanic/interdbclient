@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **subcollection** | **str** |  | [optional] 
 **is_installation** | **bool** |  | [optional] 
 **is_source** | **bool** |  | [optional] 
+**kind** | **str** |  | [optional] 
 **edition** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
